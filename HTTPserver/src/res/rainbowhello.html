@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body{
+            background-color: white;
+            color:black;
+            font:normal 20pt Arial;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <h1 id = "title">Hello, World!</h1>
+
+    <script>
+        var body = document.querySelector("body");
+        var title = document.getElementById("title");
+        var color, tcolor
+        var r= 0, g = 0, b = 0, tr = 255, tg = 255, tb = 255;
+        var flag = true;
+        
+
+        if(body.firstChild === null){
+            alert("elemento nulo")
+        }else{
+            alert("elemento não nulo")
+
+            setInterval(()=>{
+                if(flag){
+                    if(r < 200){
+                        r++;
+                        tr--;
+                    }else if(b < 200){
+                        b++;
+                        tb--;
+                    }else if(g < 180){
+                        g++;
+                        tg--;
+                    }
+
+                    if(g==180){
+                        flag = false
+                    }
+                }
+                else{
+                    if(r > 60){
+                        r--;
+                        tr++;
+                    }else if(b > 60){
+                        b--;
+                        tb++;
+                    }else if(g > 60){
+                        g--;
+                        tg++;
+                    }
+
+                    if(tg == 120){
+                        flag = true;
+                    }
+
+                }
+                color = `rgb(${r},${g},${b})`;
+                tcolor = `rgb(${tr},${tg},${tb})`;
+                body.style.backgroundColor = color;
+                title.style.color = tcolor;
+            }, 10);
+        }
+
+
+
+        setTimeout(() => {
+            //window.location = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+            document.querySelector("body").innerHTML += '<iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+        }, 1500);
+    </script>
+</body>
+</html>
